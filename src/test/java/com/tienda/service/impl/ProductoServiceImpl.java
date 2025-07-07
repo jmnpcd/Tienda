@@ -1,23 +1,23 @@
 
 package com.tienda.service.impl;
 
-import com.tienda.dao.CategoriaDao;
-import com.tienda.domain.Categoria;
-import com.tienda.service.CategoriaService;
+import com.tienda.dao.ProductoDao;
+import com.tienda.domain.Producto;
+import com.tienda.service.ProductoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public abstract class CategoriaServiceImpl implements CategoriaService {
+public abstract class ProductoServiceImpl implements ProductoService {
     @Autowired
-    private CategoriaDao categoriaDao;
+    private ProductoDao productoDao;
     
     @Override
     @Transactional(readOnly=true)
-    public List<Categoria> getCategorias(boolean activos){
-     var lista = categoriaDao.findAll();
+    public List<Producto> getProductos(boolean activos){
+     var lista = productoDao.findAll();
      if(activos){
       lista.removeIf(e -> !e.isActivo());
      }
